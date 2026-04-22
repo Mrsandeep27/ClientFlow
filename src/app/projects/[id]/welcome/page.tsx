@@ -55,7 +55,7 @@ UDYAM: ${vendor.udyam}`;
 
   return (
     <DocShell backHref={`/projects/${id}`} title="Welcome Message" subtitle={project.invoiceNumber} onGenerate={saveDraft}>
-      <div style={{ padding: "20px 20px" }}>
+      <div className="doc-page-wrapper" style={{ padding: "20px 20px" }}>
         {/* Actions above doc */}
         <div className="no-print" style={{ maxWidth: "210mm", margin: "0 auto 14px", display: "flex", gap: 10 }}>
           <button onClick={copyWhatsApp} style={{
@@ -69,7 +69,7 @@ UDYAM: ${vendor.udyam}`;
           </div>
         </div>
 
-        <div style={{
+        <div className="doc-a4" style={{
           maxWidth: "210mm", margin: "0 auto", background: "#fff", padding: "20mm 22mm",
           boxShadow: "0 8px 32px rgba(0,0,0,0.08)", minHeight: "297mm",
           fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#0f172a", lineHeight: 1.6,

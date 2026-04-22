@@ -25,25 +25,25 @@ export default function HomePage() {
     );
 
   return (
-    <div style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1400, margin: "0 auto" }}>
+    <div className="page-container" style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1400, margin: "0 auto" }}>
       {/* Header */}
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
+      <header className="header-flex" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
         <div>
-          <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: 32, fontWeight: 800, letterSpacing: "-0.02em" }}>
+          <h1 className="big-title" style={{ fontFamily: "Playfair Display, serif", fontSize: 32, fontWeight: 800, letterSpacing: "-0.02em" }}>
             ClientFlow
           </h1>
           <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#71717a", marginTop: 4, letterSpacing: 1, textTransform: "uppercase" }}>
             Sandeep Digital Solutions · Client Onboarding System
           </div>
         </div>
-        <div style={{ display: "flex", gap: 10 }}>
+        <div className="header-actions" style={{ display: "flex", gap: 10 }}>
           <Link href="/settings" style={btn("ghost")}>Settings</Link>
           <Link href="/projects/new" style={btn("primary")}>+ New Project</Link>
         </div>
       </header>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 28 }}>
+      <div className="grid-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 28 }}>
         <StatCard label="Active Projects" value={active.length.toString()} />
         <StatCard label="Delivered" value={delivered.length.toString()} />
         <StatCard label="Revenue Collected" value={formatCurrency(totalRevenue)} />
@@ -78,11 +78,11 @@ export default function HomePage() {
 
 function StatCard({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div style={{ background: "#fff", border: "1px solid #e4e4e7", borderRadius: 8, padding: 16 }}>
+    <div className="stat-card" style={{ background: "#fff", border: "1px solid #e4e4e7", borderRadius: 8, padding: 16 }}>
       <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "#71717a", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>
         {label}
       </div>
-      <div style={{ fontSize: 24, fontWeight: 700, color: accent ? "#dc2626" : "#0f172a", letterSpacing: "-0.02em" }}>
+      <div className="stat-value" style={{ fontSize: 24, fontWeight: 700, color: accent ? "#dc2626" : "#0f172a", letterSpacing: "-0.02em" }}>
         {value}
       </div>
     </div>
@@ -114,7 +114,7 @@ function EmptyState({ message }: { message: string }) {
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 14 }}>
+    <div className="project-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 14 }}>
       {projects.map((p) => (
         <ProjectCard key={p.id} project={p} />
       ))}

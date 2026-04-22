@@ -19,22 +19,23 @@ export function DocShell({
   return (
     <div style={{ minHeight: "100vh", background: "#fafafa" }}>
       {/* Top bar (hidden in print) */}
-      <div className="no-print" style={{
+      <div className="no-print doc-shell-top" style={{
         background: "#0f172a", color: "#fff", padding: "12px 24px",
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        position: "sticky", top: 0, zIndex: 100,
+        position: "sticky", top: 0, zIndex: 100, gap: 10, flexWrap: "wrap",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, minWidth: 0 }}>
           <Link href={backHref} style={{
             fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#cbd5e1",
             textDecoration: "none", letterSpacing: 1, textTransform: "uppercase",
+            flexShrink: 0,
           }}>← Back</Link>
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 600 }}>{title}</div>
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div className="doc-shell-title" style={{ fontSize: 14, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{title}</div>
             {subtitle && <div style={{ fontSize: 11, color: "#cbd5e1" }}>{subtitle}</div>}
           </div>
         </div>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
           {onGenerate && (
             <button onClick={onGenerate} style={{
               padding: "8px 14px", background: "#2563eb", color: "#fff",

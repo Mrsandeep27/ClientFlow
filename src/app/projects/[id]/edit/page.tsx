@@ -166,7 +166,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
   const milestoneSum = milestones.reduce((s, m) => s + m.percent, 0);
 
   return (
-    <div style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1100, margin: "0 auto" }}>
+    <div className="page-container" style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1100, margin: "0 auto" }}>
       <nav style={{ marginBottom: 20 }}>
         <Link href={`/projects/${id}`} style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#71717a", textDecoration: "none", letterSpacing: 1, textTransform: "uppercase" }}>
           ← Back to Project
@@ -323,8 +323,9 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 function Grid({ cols, children }: { cols: number; children: React.ReactNode }) {
+  const className = cols === 3 ? "grid-3" : cols === 2 ? "grid-2" : "";
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 14, marginBottom: 12 }}>
+    <div className={className} style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 14, marginBottom: 12 }}>
       {children}
     </div>
   );

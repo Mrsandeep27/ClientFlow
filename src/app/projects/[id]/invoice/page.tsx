@@ -32,7 +32,7 @@ export default function InvoicePage({ params }: { params: Promise<{ id: string }
 
   return (
     <DocShell backHref={`/projects/${id}`} title="Invoice" subtitle={project.invoiceNumber} onGenerate={saveDraft}>
-      <div style={{ padding: "20px 20px" }}>
+      <div className="doc-page-wrapper" style={{ padding: "20px 20px" }}>
         {/* Mode selector */}
         <div className="no-print" style={{ maxWidth: "210mm", margin: "0 auto 14px", display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ fontSize: 12, color: "#71717a" }}>Invoice for:</div>
@@ -45,7 +45,7 @@ export default function InvoicePage({ params }: { params: Promise<{ id: string }
           </select>
         </div>
 
-        <div style={{
+        <div className="doc-a4" style={{
           maxWidth: "210mm", margin: "0 auto", background: "#fff", padding: "18mm 16mm",
           boxShadow: "0 8px 32px rgba(0,0,0,0.08)", minHeight: "297mm",
           fontFamily: "'Inter', sans-serif", fontSize: 10, color: "#0f172a", lineHeight: 1.4,

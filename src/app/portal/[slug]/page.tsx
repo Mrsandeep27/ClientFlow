@@ -63,7 +63,7 @@ export default function PortalPage({ params }: { params: Promise<{ slug: string 
           <div style={{ height: 8, background: "#f1f5f9", borderRadius: 4, overflow: "hidden" }}>
             <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg, #059669, #10b981)", transition: "width 0.3s" }} />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, marginTop: 18 }}>
+          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, marginTop: 18 }}>
             <Stat label="Total Amount" value={formatCurrency(project.project.finalAmount)} />
             <Stat label="Paid" value={formatCurrency(paid)} color="#059669" />
             <Stat label="Pending" value={formatCurrency(pending)} color="#dc2626" />

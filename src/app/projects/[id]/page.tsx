@@ -41,7 +41,7 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
   }
 
   return (
-    <div style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1200, margin: "0 auto" }}>
+    <div className="page-container" style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1200, margin: "0 auto" }}>
       <nav style={{ marginBottom: 16 }}>
         <Link href="/" style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#71717a", textDecoration: "none", letterSpacing: 1, textTransform: "uppercase" }}>
           ← All Projects
@@ -49,19 +49,19 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
       </nav>
 
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+      <div className="header-flex" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
         <div>
           <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#71717a", letterSpacing: 1, marginBottom: 4 }}>
             {project.invoiceNumber} · Created {formatDate(project.createdAt)}
           </div>
-          <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: 30, fontWeight: 800, letterSpacing: "-0.02em" }}>
+          <h1 className="big-title" style={{ fontFamily: "Playfair Display, serif", fontSize: 30, fontWeight: 800, letterSpacing: "-0.02em" }}>
             {project.client.businessName}
           </h1>
           <div style={{ color: "#3f3f46", fontSize: 14, marginTop: 4 }}>
             {project.project.title}
           </div>
         </div>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div className="header-actions" style={{ display: "flex", gap: 8 }}>
           {project.status === "active" && (
             <button onClick={markDelivered} style={btnStyle("primary")}>Mark Delivered</button>
           )}
@@ -72,7 +72,7 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
       </div>
 
       {/* Summary */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, margin: "20px 0 28px" }}>
+      <div className="grid-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, margin: "20px 0 28px" }}>
         <InfoCard label="Total Amount" value={formatCurrency(project.project.finalAmount)} />
         <InfoCard label="Collected" value={formatCurrency(paidAmount)} accent="#059669" />
         <InfoCard label="Pending" value={formatCurrency(project.project.finalAmount - paidAmount)} accent="#dc2626" />
@@ -80,7 +80,7 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
       </div>
 
       {/* Two columns: Docs + Milestones */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 20 }}>
+      <div className="grid-2-dashboard" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 20 }}>
         {/* Documents */}
         <div>
           <h2 style={sectionTitleStyle()}>5 Documents</h2>

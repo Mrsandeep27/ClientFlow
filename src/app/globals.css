@@ -29,12 +29,193 @@ html, body {
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 button { cursor: pointer; font-family: inherit; }
 input, textarea, select { font-family: inherit; }
 
-/* Print styles for PDF generation */
+/* ==========================================
+   RESPONSIVE — MOBILE FIRST BREAKPOINTS
+   ========================================== */
+
+/* Container adjustments for mobile */
+.page-container {
+  padding: 28px 32px !important;
+}
+
+/* Mobile: < 768px */
+@media (max-width: 768px) {
+  body { font-size: 13px; }
+
+  .page-container {
+    padding: 16px 14px !important;
+  }
+
+  /* Headers */
+  .header-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+  }
+  .header-flex > * {
+    width: 100%;
+  }
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .header-actions > * {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+  }
+
+  /* Title scaling */
+  .big-title {
+    font-size: 24px !important;
+  }
+
+  /* Grids → all become single column on mobile */
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .grid-2-dashboard {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Stat cards - smaller padding */
+  .stat-card {
+    padding: 12px !important;
+  }
+  .stat-card .stat-value {
+    font-size: 18px !important;
+  }
+
+  /* Project cards */
+  .project-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Form sections */
+  .form-section {
+    padding: 16px !important;
+  }
+
+  /* Scope table — horizontal scroll on mobile */
+  .scope-table-wrapper {
+    overflow-x: auto;
+    margin: 0 -14px;
+    padding: 0 14px;
+  }
+  .scope-table-row {
+    min-width: 600px;
+  }
+
+  /* Document cards */
+  .doc-card {
+    grid-template-columns: 36px 1fr !important;
+    gap: 10px !important;
+  }
+  .doc-card-status,
+  .doc-card-arrow {
+    display: none !important;
+  }
+  .doc-card-title-row {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .doc-card-status-mobile {
+    display: inline-block !important;
+  }
+
+  /* Action buttons */
+  .btn-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .btn-row > * {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Invoice/Contract/Welcome document pages */
+  .doc-page-wrapper {
+    padding: 14px 4px !important;
+  }
+  .doc-a4 {
+    padding: 12mm 10mm !important;
+    min-height: auto !important;
+    font-size: 10px !important;
+  }
+
+  /* DocShell top bar on mobile */
+  .doc-shell-top {
+    padding: 10px 14px !important;
+  }
+  .doc-shell-title {
+    font-size: 12px !important;
+  }
+
+  /* Milestone rows */
+  .milestone-row {
+    grid-template-columns: 40px 1fr auto !important;
+  }
+
+  /* Portal page */
+  .portal-header {
+    padding: 16px 18px !important;
+  }
+  .portal-stats {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+.doc-card-status-mobile { display: none; }
+
+/* Small mobile: < 420px */
+@media (max-width: 420px) {
+  .grid-4 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .big-title {
+    font-size: 20px !important;
+  }
+  .doc-a4 {
+    font-size: 9px !important;
+  }
+}
+
+/* Tablet: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .grid-2-dashboard {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Desktop: > 1024px (defaults apply) */
+
+/* Print styles */
 @media print {
   body { background: #fff; }
   .no-print { display: none !important; }
@@ -42,3 +223,13 @@ input, textarea, select { font-family: inherit; }
   @page { size: A4; margin: 0; }
 }
 .print-only { display: none; }
+
+/* Touch targets - minimum 44px on mobile */
+@media (max-width: 768px) {
+  button, a[role="button"], input, select, textarea {
+    min-height: 40px;
+  }
+  select, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"] {
+    font-size: 16px !important; /* Prevents iOS zoom */
+  }
+}

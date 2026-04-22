@@ -121,7 +121,7 @@ export default function NewProjectPage() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1100, margin: "0 auto" }}>
+    <div className="page-container" style={{ minHeight: "100vh", padding: "28px 32px", maxWidth: 1100, margin: "0 auto" }}>
       <nav style={{ marginBottom: 20 }}>
         <Link href="/" style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "#71717a", textDecoration: "none", letterSpacing: 1, textTransform: "uppercase" }}>
           ← Back to Dashboard
@@ -173,11 +173,12 @@ export default function NewProjectPage() {
 
       {/* SCOPE */}
       <Section title="03 · Scope & Pricing">
-        <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "#71717a", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 8, display: "grid", gridTemplateColumns: "1fr 90px 70px 110px 110px 40px", gap: 10 }}>
+        <div className="scope-table-wrapper">
+        <div className="scope-table-row" style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "#71717a", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 8, display: "grid", gridTemplateColumns: "1fr 90px 70px 110px 110px 40px", gap: 10 }}>
           <div>Item</div><div>SAC</div><div>Qty</div><div>Rate</div><div>Amount</div><div></div>
         </div>
         {scope.map((s) => (
-          <div key={s.id} style={{ display: "grid", gridTemplateColumns: "1fr 90px 70px 110px 110px 40px", gap: 10, marginBottom: 8 }}>
+          <div key={s.id} className="scope-table-row" style={{ display: "grid", gridTemplateColumns: "1fr 90px 70px 110px 110px 40px", gap: 10, marginBottom: 8 }}>
             <input style={inputStyle()} value={s.item} onChange={(e) => updateScope(s.id, "item", e.target.value)} placeholder="Service name" />
             <input style={inputStyle()} value={s.sacCode} onChange={(e) => updateScope(s.id, "sacCode", e.target.value)} />
             <input style={inputStyle()} type="number" value={s.quantity} onChange={(e) => updateScope(s.id, "quantity", Number(e.target.value))} />
@@ -186,6 +187,7 @@ export default function NewProjectPage() {
             <button onClick={() => removeScopeItem(s.id)} style={{ padding: "8px", border: "1px solid #e4e4e7", borderRadius: 4, background: "#fff", color: "#dc2626" }}>×</button>
           </div>
         ))}
+        </div>
         <button onClick={addScopeItem} style={{ padding: "8px 14px", border: "1px dashed #71717a", borderRadius: 4, background: "transparent", color: "#71717a", fontSize: 12, marginTop: 4 }}>
           + Add Item
         </button>
@@ -251,8 +253,9 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 function Grid({ cols, children }: { cols: number; children: React.ReactNode }) {
+  const className = cols === 3 ? "grid-3" : cols === 2 ? "grid-2" : "";
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 14, marginBottom: 12 }}>
+    <div className={className} style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 14, marginBottom: 12 }}>
       {children}
     </div>
   );

@@ -30,8 +30,8 @@ export default function ContractPage({ params }: { params: Promise<{ id: string 
 
   return (
     <DocShell backHref={`/projects/${id}`} title="Client Contract" subtitle={project.invoiceNumber} onGenerate={saveDraft}>
-      <div style={{ padding: "30px 20px" }}>
-        <div style={{
+      <div className="doc-page-wrapper" style={{ padding: "30px 20px" }}>
+        <div className="doc-a4" style={{
           maxWidth: "210mm", margin: "0 auto", background: "#fff", padding: "20mm 18mm",
           boxShadow: "0 8px 32px rgba(0,0,0,0.08)", minHeight: "297mm",
           fontFamily: "'Inter', sans-serif", fontSize: 10, color: "#0f172a", lineHeight: 1.5,
